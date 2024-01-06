@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title> Sum Finder </title>
+		<style>
+			* { font-size:40px; font-family:Century; }
+			h1 { background-color:black; color:white; width:50%; border-radius:30px;}
+			.btn { background-color:red; color:white; width:20%; border-radius:30px;}
+			.btn:hover { color:yellow; }
+			body { background-color: lightblue;}
+		</style>
+		<script>
+			function find()
+			{
+				event.preventDefault();
+				let num = document.getElementById("num");
+				let msg = document.getElementById("msg");
+				let action = document.activeElement.value;
+
+				if (num.value == "")
+				{
+					alert("u did not enter number ");
+					msg.innerHTML = "";
+					num.focus();
+					return;
+				}	
+				let n =  num.value;
+
+				if (n < 0)
+				{
+					alert("-ve integer not allowed ");
+					num.value = "";
+					msg.innerHTML = "";
+					num.focus();
+					return;
+				}
+
+				if (action == "M1")
+				{
+					let i=1, sum=0;
+					while( i <= n)
+					{
+						sum = sum + i;
+						i++;
+					}
+					msg.innerHTML = "while sum = " + sum;
+				}
+				else if (action == "M2")
+				{
+					let i=1, sum=0;
+					do
+					{
+						sum = sum + i;
+						i++;
+					} while( i <= n);
+					msg.innerHTML = "do while sum = " + sum;			
+				}
+				else if (action == "M3")
+				{
+					let sum=0;
+					for(let i=1; i <= n; i++)
+						sum = sum + i;
+					msg.innerHTML = "for sum = " + sum;	
+				}
+			}
+		</script>	
+	</head>	
+
+	<body>
+	<center>
+		<h1> Sum Finder </h1>
+		<form onsubmit="find()">
+			<input type="number" id="num" placeholder="enter +ve integer" />
+			<br><br>
+			<input type="submit" value="M1" class="btn"/>
+			<input type="submit" value="M2" class="btn"/>
+			<input type="submit" value="M3" class="btn"/>
+		</form>
+			<h2 id="msg" />
+	</center>
+	</body>
+</html>
+
+
+
+
+
+
+
+
